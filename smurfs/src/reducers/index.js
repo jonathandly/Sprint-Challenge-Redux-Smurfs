@@ -51,7 +51,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         addingSmurf: true,
-        fetchingSmurfs: false
+        fetchingSmurfs: false,
       };
     case UPDATING:
       return {
@@ -75,7 +75,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         fetchingSmurfs: false,
-        addingSmurf: true
+        addingSmurf: true,
+        smurfs: action.payload
       };
     case UPDATE_SMURF:
       return {

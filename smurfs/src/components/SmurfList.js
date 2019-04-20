@@ -21,7 +21,7 @@ class SmurfList extends React.Component {
                     return (
                         <div className="smurfs">
                             <h2>{smurf.name}</h2>
-                            <p>{smurf.age}</p>
+                            <p>{smurf.age} smurf years old</p>
                             <p>{smurf.height}</p>
                         </div>
                     );

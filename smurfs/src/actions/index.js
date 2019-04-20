@@ -45,7 +45,7 @@ export const addSmurf = smurf => dispatch => {
   return axios 
     .post('http://localhost:3333/smurfs', smurf)
     .then(res => {
-      dispatch({ type: ADD_SMURF, payload: res.data });
+      dispatch({ type: ADD_SMURF, payload: res.smurfs });
     })
     .catch(err => 'ERROR!: ', `$err}`);
 }

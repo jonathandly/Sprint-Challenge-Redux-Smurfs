@@ -35,7 +35,7 @@ export const getSmurfs = () => dispatch => {
       dispatch({ type: GET_SMURFS, payload: res.data });
     })
     .catch(err => {
-      console.log('ERROR!: ', err);
+      console.log('ERROR!: ', `${err}`);
     });
 }
 
@@ -46,5 +46,5 @@ export const addSmurf = smurf => dispatch => {
     .then(res => {
       dispatch({ type: ADD_SMURF, payload: res.data });
     })
-    .catch(err => 'ERROR!: ', err);
+    .catch(err => 'ERROR!: ', `$err}`);
 }

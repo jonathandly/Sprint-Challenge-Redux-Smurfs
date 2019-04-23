@@ -47,5 +47,32 @@ export const addSmurf = smurf => dispatch => {
     .then(res => {
       dispatch({ type: ADD_SMURF, payload: res.data });
     })
-    .catch(err => 'ERROR!: ', `$err}`);
+    .catch(err => {
+      console.log(`ERROR!: `, err);
+    });
+      
+}
+
+export const deleteSmurf = smurf => dispatch => {
+  dispatch({ type: DELETING });
+  return axios 
+    .delete(`http://localhost:3333/smurfs/${smurf.id}`)
+    .then(res => {
+      dispatch({ type: DELETE_SMURF, payload: res.data })
+    })
+    .catch(err => {
+      console.log(`ERROR!: `, err);
+    });
+}
+
+export const updateSmurf = smurf => dispatch => {
+  dispatch({ type: UPDATING });
+  return axios 
+    .put(`http://localhost:3333/smurfs/${smurf.id}`, smurf)
+    .then(res => {
+      dispatch({ type: UPDATE_SMURF, payload: res.data });
+    })
+    .catch(err => {
+      console.log(`ERROR!: `, err);
+    });
 }

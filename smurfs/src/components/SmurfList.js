@@ -2,7 +2,8 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
-import { getSmurfs, addSmurf } from '../actions';
+import { getSmurfs, addSmurf, updateSmurf, deleteSmurf } from '../actions';
+import EditSmurf from './EditSmurf';
 
 class SmurfList extends React.Component {
     // state = {
@@ -23,6 +24,10 @@ class SmurfList extends React.Component {
                             <h2>{smurf.name}</h2>
                             <p>{smurf.age} smurf years old</p>
                             <p>{smurf.height}</p>
+                            <EditSmurf 
+                                smurf={smurf}
+                                updateSmurf={updateSmurf}
+                            />
                         </div>
                     );
                 })}
@@ -41,4 +46,4 @@ const mapStateToProps = ({
     addingSmurf
 });
 
-export default connect(mapStateToProps, { getSmurfs, addSmurf})(SmurfList);
+export default connect(mapStateToProps, { getSmurfs, addSmurf, updateSmurf, deleteSmurf })(SmurfList);

@@ -13,3 +13,66 @@
    U - updateSmurf
    D - deleteSmurf
 */
+
+import axios from 'axios';
+
+export const FETCHING = "FETCHING";
+export const CREATING = "CREATING";
+
+export const UPDATING = "UPDATING";
+export const DELETING = "DELETING";
+
+export const GET_SMURFS = "GET_SMURFS";
+export const ADD_SMURF = "ADD_SMURF";
+
+export const UPDATE_SMURF = "UPDATE_SMURF";
+export const DELETE_SMURF = "DELETE_SMURF";
+
+export const getSmurfs = () => dispatch => {
+  dispatch({ type: FETCHING });
+  return axios 
+    .get('http://localhost:3333/smurfs')
+    .then(res => {
+      dispatch({ type: GET_SMURFS, payload: res.data });
+    })
+    .catch(err => {
+      console.log('ERROR!: ', `${err}`);
+    });
+}
+
+export const addSmurf = smurf => dispatch => {
+  dispatch({ type: CREATING });
+  return axios 
+    .post('http://localhost:3333/smurfs', smurf)
+    .then(res => {
+      dispatch({ type: ADD_SMURF, payload: res.data });
+    })
+    .catch(err => {
+      console.log(`ERROR!: `, err);
+    });
+      
+}
+
+export const deleteSmurf = smurf => dispatch => {
+  dispatch({ type: DELETING });
+  return axios 
+    .delete(`http://localhost:3333/smurfs/${smurf.id}`)
+    .then(res => {
+      dispatch({ type: DELETE_SMURF, payload: res.data })
+    })
+    .catch(err => {
+      console.log(`ERROR!: `, err);
+    });
+}
+
+export const updateSmurf = smurf => dispatch => {
+  dispatch({ type: UPDATING });
+  return axios 
+    .put(`http://localhost:3333/smurfs/${smurf.id}`, smurf)
+    .then(res => {
+      dispatch({ type: UPDATE_SMURF, payload: res.data });
+    })
+    .catch(err => {
+      console.log(`ERROR!: `, err);
+    });
+}
